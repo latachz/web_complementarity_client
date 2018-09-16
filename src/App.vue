@@ -8,6 +8,7 @@
       <div class="form-group">
         <label for="dnaInput">Dna strand</label>
         <input v-model="dnaStrand" type="text" class="form-control" id="dnaInput" aria-describedby="emailHelp" placeholder="ATCGTAATC">
+        <input hidden>
       </div>
       <button @click="sendDna" type="submit" class="btn btn-primary">Check</button>
     </form>
@@ -25,8 +26,8 @@ export default {
   name: 'app',
   data () {
     return {
-      dnaStrand: 'ATCGTAATC',
-      newDnaStrand: 'TAGCATTAG',
+      dnaStrand: '',
+      newDnaStrand: '',
       errors: []
     }
   },

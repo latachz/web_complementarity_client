@@ -1,21 +1,24 @@
 <template>
+<div class="main">
 <div class="container">
   <div class="jumbotron">
     <h1 class="display-4">DNA Complementarity App</h1>
-    <p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+    <p class="lead">Simple application which helps you in DNA Complementarity.</p>
     <hr class="my-4">
     <form>
       <div class="form-group">
-        <label for="dnaInput">Dna strand</label>
-        <input v-model="dnaStrand" type="text" class="form-control" id="dnaInput" aria-describedby="emailHelp" placeholder="ATCGTAATC">
-        <input hidden>
+        <label>Dna strand</label>
+        <input autocomplete="off" style="text-transform:uppercase" v-model="dnaStrand" type="text" class="form-control" id="dnaInput" aria-describedby="emailHelp" placeholder="ATCGTAATC">
+        <small class="form-text text-danger" v-if="error != ''">Nucleotides [A, C, T, G]</small>
       </div>
-      <button @click="sendDna" type="submit" class="btn btn-primary">Check</button>
+      <button @click="sendDna" type="button" class="btn btn-primary">Check</button>
     </form>
+    <hr class="my-4">
+    <h1 class="strand" v-if="error == ''">{{ dnaStrand.toUpperCase() }}</h1>
+    <h1 class="strand">{{ newDnaStrand }}</h1>
   </div>
 
-  <h1>{{ dnaStrand }}</h1>
-  <h1>{{ newDnaStrand }}</h1>
+</div>
 </div>
 </template>
 
@@ -28,7 +31,7 @@ export default {
     return {
       dnaStrand: '',
       newDnaStrand: '',
-      errors: []
+      error: ''
     }
   },
   methods: {
@@ -38,10 +41,10 @@ export default {
           "strand": this.dnaStrand
         })
         .then((res) => {
-            this.newDnaStrand = res.strand
+            this.newDnaStrand = res.data
         })
         .catch(e => {
-          this.errors.push(e)
+          this.error = e
         })
     }
   }
@@ -49,8 +52,23 @@ export default {
 </script>
 
 <style lang="scss">
-body {
-  background-color: #42b983;
+.main {
+  background: url(assets/bg.jpg); 
+  width: 100vw;
+  height: 100vh;
+
+}
+
+button.btn {
+  position: center;
+}
+
+.strand {
+
+}
+
+p.lead {
+  text-align: center;
 }
 
 h1, h2 {
@@ -58,17 +76,4 @@ h1, h2 {
   text-align: center;
 }
 
-ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-li {
-  display: inline-block;
-  margin: 0 10px;
-}
-
-a {
-  color: #42b983;
-}
 </style>

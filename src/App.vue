@@ -7,9 +7,9 @@
     <form>
       <div class="form-group">
         <label for="dnaInput">Dna strand</label>
-        <input v-model="dnaStrand"  type="text" class="form-control" id="dnaInput" aria-describedby="emailHelp" placeholder="ATCGTAATC">
+        <input v-model="dnaStrand" type="text" class="form-control" id="dnaInput" aria-describedby="emailHelp" placeholder="ATCGTAATC">
       </div>
-      <button @click="checkDna" type="submit" class="btn btn-primary">Check</button>
+      <button @click="sendDna" type="submit" class="btn btn-primary">Check</button>
     </form>
   </div>
 
@@ -19,18 +19,27 @@
 </template>
 
 <script>
+import axios from 'axios'
+
 export default {
   name: 'app',
   data () {
     return {
       dnaStrand: 'ATCGTAATC',
-      newDnaStrand: 'TAGCATTAG'
+      newDnaStrand: 'TAGCATTAG',
+      errors: []
     }
   },
   methods: {
-    checkDna () {
-      this.dnaStrand = this.dnaStrand
-      this.newDnaStrand = this.dnaStrand
+    sendDna () {
+      axios
+        .post('http://localhost:4000/api/dna', {
+          body: {"strand": this.dnaStrand}
+        })
+        .then(res => {})
+        .catch(e => {
+          this.erros.push(e)
+        })
     }
   }
 }

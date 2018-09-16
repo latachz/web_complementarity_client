@@ -34,11 +34,10 @@ export default {
     sendDna () {
       axios
         .post('http://localhost:4000/api/dna', {
-          body: {"strand": this.dnaStrand}
+          "strand": this.dnaStrand
         })
-        .then(res => {})
         .then((res) => {
-          return res = this.newDnaStrand
+            this.newDnaStrand = res.strand
         })
         .catch(e => {
           this.errors.push(e)

@@ -37,8 +37,11 @@ export default {
           body: {"strand": this.dnaStrand}
         })
         .then(res => {})
+        .then((res) => {
+          return res = this.newDnaStrand
+        })
         .catch(e => {
-          this.erros.push(e)
+          this.errors.push(e)
         })
     }
   }

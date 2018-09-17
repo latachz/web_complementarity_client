@@ -37,7 +37,7 @@ export default {
   methods: {
     sendDna () {
       axios
-        .post('http://localhost:4000/api/dna', {
+        .post('https://complementarity-dna-api.herokuapp.com/api/dna', {
           "strand": this.dnaStrand
         })
         .then((res) => {

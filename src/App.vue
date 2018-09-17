@@ -20,7 +20,8 @@
 </div>
    <div class="footer">
       <div class="container">
-        <p class="font-weight-bold">Copyright &copy; 2018 Created <i class="fa fa-html5" aria-hidden="true"></i> <i class="fa fa-css3" aria-hidden="true"></i> by <a href="http://kacperlatuszewski.pl" target="_blank"><em><b>Kacper Latuszewski</b></em></a></p>
+        <p class="font-weight-bold">Created<i class="fa fa-html5" aria-hidden="true"></i> <i class="fa fa-css3" aria-hidden="true"></i> by <a href="http://kacperlatuszewski.pl" target="_blank"><em><b>Kacper Latuszewski</b></em></a></p>
+        <p class="font-weight-bold">You can find this project there! <a href="https://github.com/latachz">GitHub</a></p>
       </div>
     </div>
 </div>
@@ -71,8 +72,8 @@ export default {
   width: 100%;
   background-color: black;
   text-align: center;
-  height: 60px;
-  padding: 20px;
+  height: 120px;
+  padding: 25px;
   color: white;
 
 }

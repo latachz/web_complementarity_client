@@ -53,7 +53,7 @@ export default {
 
 <style lang="scss">
 .main {
-  background: url(assets/bg.jpg); 
+  background: url(bg.jpg); 
   width: 100vw;
   height: 100vh;
 
